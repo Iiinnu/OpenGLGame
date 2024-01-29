@@ -12,7 +12,7 @@ class Triangle
 	Material* material;
 
 public:
-	Triangle(Mesh* _mesh, Material* _material) {
+	Triangle(Material* _material, Mesh* _mesh) {
 		mesh = _mesh;
 		material = _material;
 

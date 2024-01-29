@@ -7,7 +7,7 @@ class Shader
 {
 public:
     unsigned int shaderId;
-    Shader(const char* source, short shaderType) { // when constructed: load shader on GPU
+    Shader(const char* source, int shaderType) { // when constructed: load shader on GPU
         //const char* vertexShaderSource{
        
         shaderId = glCreateShader(shaderType);

@@ -24,7 +24,7 @@ int main() {
            -0.5f,  0.5f, 0.0f,
            -1.0f, 0.5f, 0.0f
     };
-    // 9*float = 36  / 1*float (4)   = 9
+    
     Mesh mesh1{ vertices, size(vertices) }; 
 
     float vertices2[]{
@@ -67,11 +67,7 @@ int main() {
     Triangle a{ &orange, &mesh1 };
     Triangle b{ &yellow, &mesh2 };
 
-    // -------- Create Yellow Shader Program (Render Pipeline) ---------
-  
-
-
-    // While the User doesn't want to Quit (X Button, Alt+F4)
+   
     while (!window.shouldClose()) // window -> window.window
     {
         window.processInput();
