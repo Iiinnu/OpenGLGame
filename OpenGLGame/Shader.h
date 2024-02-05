@@ -1,10 +1,13 @@
+#pragma once
 
+#include "glad/glad.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
 class Shader
 {
+    // Function to read the contents of a file into a string
     std::string readShaderFile(const std::string& filePath) {
         std::ifstream fileStream(filePath);
 
@@ -48,16 +51,12 @@ class Shader
         return shader;
     }
 
-
 public:
     unsigned int shaderId;
     Shader(const char* shaderPath, int shaderType) { // when constructed: load shader on GPU
-        //const char* vertexShaderSource{
-       
         shaderId = compileShaderFromFile(shaderPath, shaderType);
-       
     }
-    Shader(const Shader&) = delete; // avoid it being cloned
+    Shader(const Shader&) = delete; // avoid it being cloned // Copy Constructor
 
     ~Shader() { // when destructed: delete the shader from GPU
         glDeleteShader(shaderId);

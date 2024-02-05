@@ -21,11 +21,10 @@ class Window
     GLFWwindow* window;
 
 public:
-
     // we introduced a bool to show whether creating the window
     // was successful or not
     bool success{};
-    Window(int width, int height) {
+    Window(int width, int height) { // Start (Awake)
         glfwSetErrorCallback(error_callback);
 
         // Initialize GLFW
@@ -40,9 +39,10 @@ public:
 #if __APPLE__
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
+
         // Request Window from Operating System
-      // And assign it to public class variable, so it can 
-      // be accessed from the outside
+        // And assign it to public class variable, so it can
+        // be accessed from the outside
         window = glfwCreateWindow(800, 600,
             "LearnOpenGL", nullptr, nullptr);
 
@@ -73,19 +73,20 @@ public:
         return glfwWindowShouldClose(this->window);
     }
 
-    void processInput()
-    {
-        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-            glfwSetWindowShouldClose(this->window, true);
+    void present() {
+        glfwSwapBuffers(window);
     }
 
-    void present() {
-        glfwSwapBuffers(this->window);
+    void processInput()
+    {
+        glfwPollEvents();
+        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            glfwSetWindowShouldClose(window, true);
     }
 
     void clear() {
         glClearColor(0.0f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
     }
-
 };
+

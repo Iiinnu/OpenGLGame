@@ -1,2 +1,1 @@
-# OpenGLGame-master
- 
+# OpenGLGame
